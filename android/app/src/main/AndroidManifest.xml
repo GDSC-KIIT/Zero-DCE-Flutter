@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dsckiit.zero_d_c_e_flutter">
+    <uses-permission android:name="android.permission.CAMERA" />
+
    <application
         android:label="zero_d_c_e_flutter"
         android:icon="@mipmap/ic_launcher">

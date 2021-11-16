@@ -8,6 +8,9 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.3.8
+  camera: ^0.9.4+4
+  sliding_up_panel: ^2.0.0+1
+  font_awesome_flutter: ^9.2.0
   flutter: 
     sdk: flutter
 
