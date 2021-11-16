@@ -32,44 +32,81 @@ class CameraPreviewWidget extends StatelessWidget {
                 (MediaQuery.of(context).padding.top +
                     AppBar().preferredSize.height +
                     MediaQuery.of(context).padding.top),
-            color: Colors.white,
-            child: Obx(() {
-              if (camService.cameraState == CameraState.stopped) {
-                return Container(
-                  child: Center(
-                      child: CircleAvatar(
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.camera_alt_outlined),
-                    ),
-                  )),
-                );
-              } else if (camService.cameraState == CameraState.loading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (camService.cameraState == CameraState.ready) {
-                return CameraPreview(cameraController);
-              } else {
-                throw Exception('Unknown camera state');
-              }
-            }),
-          ),
-        ),
-        Container(
-          height: AppBar().preferredSize.height,
-          width: double.infinity,
-          // color: Colors.black,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              FaIcon(FontAwesomeIcons.cog, color: Colors.white), 
-              FaIcon(FontAwesomeIcons.bolt, color: Colors.white), 
-            ],
+            color: Colors.black,
+            child: Stack(
+              children: [
+                Obx(() {
+                  if (camService.cameraState == CameraState.stopped) {
+                    return Container(
+                      child: Center(
+                          child: CircleAvatar(
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.camera_alt_outlined),
+                        ),
+                      )),
+                    );
+                  } else if (camService.cameraState == CameraState.loading) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (camService.cameraState == CameraState.ready) {
+                    return CameraPreview(
+                      cameraController,
+                      child: Stack(
+                        children: [
+                          topTools(),
+                          bottomTools(),
+                        ],
+                      ),
+                    );
+                  } else {
+                    throw Exception('Unknown camera state');
+                  }
+                }),
+              ],
+            ),
           ),
         ),
       ],
+    );
+  }
+
+  Widget bottomTools() {
+    return Positioned(
+      bottom: 10,
+      left: 0,
+      right: 0,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FaIcon(FontAwesomeIcons.fileImage, color: Colors.white),
+          CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              radius: 35,
+              backgroundColor: Colors.grey[800],
+            ),
+          ),
+          FaIcon(FontAwesomeIcons.sync, color: Colors.white),
+        ],
+      ),
+    );
+  }
+
+  Widget topTools() {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          FaIcon(FontAwesomeIcons.cog, color: Colors.white),
+          FaIcon(FontAwesomeIcons.bolt, color: Colors.white),
+        ],
+      ),
     );
   }
 }

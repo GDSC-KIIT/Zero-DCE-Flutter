@@ -23,5 +23,5 @@ Future<void> init() async {
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   Get.put(CameraService());
-  Get.put(LifeCycleService());
+  // Get.put(LifeCycleService());
 }
