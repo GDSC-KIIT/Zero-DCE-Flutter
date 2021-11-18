@@ -12,10 +12,16 @@ class HomeView extends GetView<HomeController> {
         MediaQuery.of(context).padding.top + AppBar().preferredSize.height;
     return Material(
       child: SlidingUpPanel(
+        controller: controller.panelController,
         maxHeight: MediaQuery.of(context).size.height,
         minHeight: barHeight,
+        parallaxEnabled: true,
         panel: Scaffold(
           appBar: AppBar(
+            // leading: IconButton(
+            //   onPressed: () => controller.showCamBody(),
+            //   icon: Icon(FontAwesomeIcons.chevronDown),
+            // ),
             title: Text('Gallery'),
             centerTitle: true,
           ),
@@ -24,7 +30,9 @@ class HomeView extends GetView<HomeController> {
             color: Colors.black,
             alignment: Alignment.center,
             padding: EdgeInsets.only(left: 30, right: 30),
-            child: FaIcon(FontAwesomeIcons.chevronUp, color: Colors.white)),
+            child: IconButton(
+                onPressed: controller.showBottomPanel,
+                icon: FaIcon(FontAwesomeIcons.chevronUp, color: Colors.white))),
         body: Container(
           color: Colors.black,
           child: SafeArea(

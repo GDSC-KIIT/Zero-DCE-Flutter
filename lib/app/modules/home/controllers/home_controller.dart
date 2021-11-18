@@ -1,20 +1,10 @@
 import 'package:get/get.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  final panelController = PanelController();
+  void showBottomPanel() => panelController.open();
+  void showCamBody() {
+    panelController.close();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }
