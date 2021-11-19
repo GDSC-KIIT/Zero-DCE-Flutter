@@ -13,6 +13,7 @@ dependencies:
   font_awesome_flutter: ^9.2.0
   path_provider: ^2.0.7
   intl: ^0.17.0
+  # tflite: ^1.1.2
   flutter: 
     sdk: flutter
 
@@ -23,4 +24,5 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
-
+  assets:
+    - assets/model/
