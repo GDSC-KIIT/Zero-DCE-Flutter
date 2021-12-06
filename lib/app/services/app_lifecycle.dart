@@ -6,8 +6,9 @@ class LifeCycleService extends SuperController {
     final camService = Get.find<CameraService>();
     camService.cameraState.value = CameraState.loading;
     if (camService.cameraController != null) {
-      if (camService.cameraController!.value.isPreviewPaused)
+      if (camService.cameraController!.value.isPreviewPaused) {
         camService.cameraController!.resumePreview();
+      }
     } else {
       // camService.initCamera();
     }

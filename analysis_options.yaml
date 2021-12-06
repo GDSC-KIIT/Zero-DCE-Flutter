@@ -1,4 +1,1 @@
-
-linter:
-  rules:
-    
+include: package:lints/recommended.yaml

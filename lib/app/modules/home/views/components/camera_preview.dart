@@ -34,7 +34,7 @@ class CameraPreviewWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.0),
         child: Obx(() {
-          if (camService.cameraState == CameraState.stopped) {
+          if (camService.cameraState.value == CameraState.stopped) {
             return Container(
               child: Center(
                   child: CircleAvatar(
@@ -44,36 +44,38 @@ class CameraPreviewWidget extends StatelessWidget {
                 ),
               )),
             );
-          } else if (camService.cameraState == CameraState.loading) {
+          } else if (camService.cameraState.value == CameraState.loading) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (camService.cameraState == CameraState.ready) {
-            return Stack(
-              children: [
-                Positioned(
-                  top: 0,
-                  bottom: 0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16.0),
-                    child: CameraPreview(
-                      cameraController,
-                      child: Container(
-                        alignment: Alignment.bottomCenter,
-                        child: Icon(Icons.star, color: Colors.yellow),
+          } else {
+            if (camService.cameraState.value == CameraState.ready) {
+              return Stack(
+                children: [
+                  Positioned(
+                    top: 0,
+                    bottom: 0,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: CameraPreview(
+                        cameraController,
+                        child: Container(
+                          alignment: Alignment.bottomCenter,
+                          child: Icon(Icons.star, color: Colors.yellow),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Tools.topTools(camService),
-                Tools.bottomTools(
-                  camService,
-                  camHeight(MediaQueryData.fromWindow(window)),
-                )
-              ],
-            );
-          } else {
-            throw Exception('Unknown camera state');
+                  Tools.topTools(camService),
+                  Tools.bottomTools(
+                    camService,
+                    camHeight(MediaQueryData.fromWindow(window)),
+                  )
+                ],
+              );
+            } else {
+              throw Exception('Unknown camera state');
+            }
           }
         }),
       ),

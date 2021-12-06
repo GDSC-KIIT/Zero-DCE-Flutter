@@ -59,8 +59,8 @@ class CameraService extends GetxService {
     }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   super.onClose();
+  // }
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:zero_d_c_e_flutter/app/modules/home/views/components/camera_preview.dart';
 import '../controllers/home_controller.dart';
+import 'components/panel.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -16,16 +17,7 @@ class HomeView extends GetView<HomeController> {
         maxHeight: MediaQuery.of(context).size.height,
         minHeight: barHeight,
         parallaxEnabled: true,
-        panel: Scaffold(
-          appBar: AppBar(
-            // leading: IconButton(
-            //   onPressed: () => controller.showCamBody(),
-            //   icon: Icon(FontAwesomeIcons.chevronDown),
-            // ),
-            title: Text('Gallery'),
-            centerTitle: true,
-          ),
-        ),
+        panel: GalleryPanel(),
         collapsed: Container(
             color: Colors.black,
             alignment: Alignment.center,
@@ -43,3 +35,4 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
+

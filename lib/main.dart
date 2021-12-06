@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
-import 'app/services/app_lifecycle.dart';
+// import 'app/services/app_lifecycle.dart';
 import 'app/services/camera_service.dart';
 
 void main() async {

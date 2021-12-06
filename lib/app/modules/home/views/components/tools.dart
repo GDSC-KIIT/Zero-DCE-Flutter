@@ -19,7 +19,7 @@ class Tools {
           CircleAvatar(
             radius: 40,
             backgroundColor: Colors.white,
-            child: new Container(
+            child: Container(
               height: 70,
               width: 70,
               decoration: BoxDecoration(
@@ -27,7 +27,7 @@ class Tools {
                   borderRadius: BorderRadius.all(Radius.circular(35))),
               child: Material(
                 color: Colors.transparent,
-                child: new InkWell(
+                child: InkWell(
                   borderRadius: BorderRadius.circular(35),
                   onTap: camService.shootPhoto,
                 ),
